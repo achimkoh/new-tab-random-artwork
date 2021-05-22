@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko-KR" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="theme-color" content="#00A700">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>새 작품</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet"> 
+    <script src="/background.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: black;
+        }
+        #background, #container {
+            opacity: 0;
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            transition: opacity 3s;
+        }
+        #background {
+            background-size: cover;
+            background-position: center;
+        }
+        #background-img {
+            width: 100%;
+            height: 100%;
+            will-change: transform;
+            animation: move 20s infinite alternate;
+            opacity: 0;
+            transition: opacity 3s;
+        }
+        #container {
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #description {
+            margin: 5rem;
+            margin-top: calc(50vh - 5rem);
+            margin-left: 50vw;
+            max-width: 800px;
+            font-size: 1.1rem;
+            line-height: 1.8rem;
+            background-color: rgba(0, 0, 0, 0.05);
+            box-shadow: 0 0 20px 20px rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transition: opacity 2s;
+        }
+        #link {
+            font-family: 'Gothic A1', sans-serif;
+            color: white;
+            text-shadow: 0 0 1px black;
+            text-decoration: none;
+        }
+        #refresh-container {
+            text-align: center;
+            position: absolute;
+            bottom: 2.5rem;
+        }
+        #refresh {
+            opacity: 0;
+            color: white;
+            cursor: pointer;
+            transition: opacity 2s;
+        }
+        #container.loaded, #description.loaded, #refresh.loaded {
+            opacity: 1;
+        }
+        #background.loaded, #background-img.loaded {
+            opacity: 0.8;
+        }
+
+        @keyframes move {
+          0% {
+            transform: scale(1.2) translateZ(0);
+          }
+          100% {
+            transform: scale(1.0) translateZ(0);
+          }
+        }
+    </style>
+  </head>
+  <body>
+    <div id="background"><img id="background-img"></div>
+    <div id="container">
+        <div id="description">
+            <a id="link" target="_blank"></a>
+        </div>
+        <div id="refresh-container">
+            <a id="refresh">새로고침</a>
+        </div>
+    </div>
+  </body>
+</html>
